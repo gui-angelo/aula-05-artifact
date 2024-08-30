@@ -13,7 +13,7 @@ jobs:
     steps:      
       - uses: actions/checkout@v4
       - name: Realizando Build do Artefato Go para Linux        
-        run: 'go build {{ env.FILE_NAME }}.go'
+        run: go build {{ env.FILE_NAME }}.go
         
       - name: Upload artifact for linux
         uses: actions/upload-artifact@v1.0.0
@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Realizando Build do Artefato Go para Windows
-        run: 'GOOS=windows GOARCH=amd64 go build {{ env.FILE_NAME }}.go'
+        run: GOOS=windows GOARCH=amd64 go build {{ env.FILE_NAME }}.go
 
       - name: Upload artifact for windows
         uses: actions/upload-artifact@v1.0.0
