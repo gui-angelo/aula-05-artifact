@@ -11,8 +11,8 @@ jobs:
   Build-Artefato-Go-Linux:
     runs-on: ubuntu-latest
     steps:      
-      - name: Realizando Build do Artefato Go para Linux
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Realizando Build do Artefato Go para Linux        
         run: 'go build {{ env.FILE_NAME }}.go'
         
       - name: Upload artifact for linux
