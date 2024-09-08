@@ -23,16 +23,12 @@ jobs:
 
       - name: Upload artifact for linux
         uses: actions/upload-artifact@v1.0.0
-        with:
-          name: linux
-          path: |
-            ls -l
-            pwd
+        run: |
+          ls -l
+          pwd
 
       - name: Upload artifact for windows
         uses: actions/upload-artifact@v1.0.0
-        with:
-          name: windows
-          path: |
-            dir
-            cd
+        run: |
+          dir
+          cd
