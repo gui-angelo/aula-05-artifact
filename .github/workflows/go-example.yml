@@ -22,13 +22,13 @@ jobs:
           path: GOOS=windows GOARCH=amd64 go build {{ env.FILE_NAME }}.go
 
       - name: Upload artifact for linux
-        uses: actions/upload-artifact@v1.0.0
+      - uses: actions/upload-artifact@v1.0.0
         run: |
           ls -l
           pwd
 
       - name: Upload artifact for windows
-        uses: actions/upload-artifact@v1.0.0
+      - uses: actions/upload-artifact@v1.0.0
         run: |
           dir
           cd
