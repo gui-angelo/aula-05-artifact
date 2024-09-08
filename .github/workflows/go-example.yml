@@ -11,24 +11,23 @@ jobs:
   BuildGo:
     runs-on: ubuntu-latest
     steps:
-      - name: Build Linux
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: go build {{ env.FILE_NAME }}.go
+    
+      - name: Build Linux
+        run: go build -o ${{ env.FILE_NAME }}.go
         
       - name: Build Windows
-        uses: actions/checkout@v4
-        with:
-          path: GOOS=windows GOARCH=amd64 go build {{ env.FILE_NAME }}.go
+        run: GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
 
-      - name: Upload artifact for linux
-        uses: actions/upload-artifact@v1.0.0
+      - name: Upload artifact for Linux
+        uses: actions/upload-artifact@v1
         with:
-          name: linux
+          name: linux-artifact
           path: ./${{ env.FILE_NAME }}
 
-      - name: Upload artifact for windows
-        uses: actions/upload-artifact@v1.0.0
+      - name: Upload artifact for Windows
+        uses: actions/upload-artifact@v1
         with:
-          name: windows
+          name: windows-artifact
           path: ./${{ env.FILE_NAME }}.exe
