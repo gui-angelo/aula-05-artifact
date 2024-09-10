@@ -1,30 +1,30 @@
 name: Go
 
-env:
-  FILE_NAME: 'hello-server'
-
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - main
 
 jobs:
   BuildGo:
     runs-on: ubuntu-latest
+    env:
+      FILE_NAME: 'hello-server'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
     
       - name: Build Linux
-        run: go build -o ${{ env.FILE_NAME }}.go
+        run: go build ${{ env.FILE_NAME }}.go
         
       - name: Build Windows
         run: GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
 
-      - name: Upload artifact for Linux
-        uses: actions/upload-artifact@v1
+      - name: Upload artifact for Windows
+        uses: actions/upload-artifact@v3
         with:
           name: linux-artifact
-          path: ./${{ env.FILE_NAME }}
+          path: ./${{ env.FILE_NAME }}.exe
 
       - name: Upload artifact for Windows
         uses: actions/upload-artifact@v1
