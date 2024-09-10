@@ -27,7 +27,7 @@ jobs:
           path: ./${{ env.FILE_NAME }}.exe
 
       - name: Upload artifact for Windows
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: windows-artifact
           path: ./${{ env.FILE_NAME }}.exe
